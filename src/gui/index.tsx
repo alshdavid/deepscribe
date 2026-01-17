@@ -1,11 +1,7 @@
 
-import { PreactRouter } from '../platform/router/preact.tsx'
-import { AUTO_BASE_HREF } from '../platform/router/router.ts'
+import { Router, AUTO_BASE_HREF } from '../platform/router/index.ts'
 
-const app = new PreactRouter({ 
-  root: document.body,
-  baseHref: AUTO_BASE_HREF 
-})
+const app = new Router({ baseHref: AUTO_BASE_HREF })
 
 app.route('/', () => {
   console.log('root')
@@ -16,6 +12,24 @@ app.route('/foo', () => {
 })
 
 app.start()
+
+// import { PreactRouter } from '../platform/router/preact.tsx'
+// import { AUTO_BASE_HREF } from '../platform/router/router.ts'
+
+// const app = new PreactRouter({ 
+//   root: document.body,
+//   baseHref: AUTO_BASE_HREF 
+// })
+
+// app.route('/', () => {
+//   console.log('root')
+// })
+
+// app.route('/foo', () => {
+//   console.log('/foo')
+// })
+
+// app.start()
 
 // import "./styles.css";
 // import { IconEllipsis } from "./components/icon/ellipsis.tsx";
