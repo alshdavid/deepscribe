@@ -1,35 +1,22 @@
 export const normalizePathname = (
   baseName: string,
   path?: string,
-  lowerCase: boolean = true,
-) => {
-  if (!path || path === "" || path === "/") {
-    return baseName;
+): string => {
+  const normalizedBase = baseName
+    ? baseName.replace(/\/$/, '').toLowerCase()
+    : '';
+  
+  const normalizedPath = (path || '/').toLowerCase();
+  
+  if (!normalizedBase && normalizedPath === '/') {
+    return '/';
   }
-  if (!path.startsWith("/")) {
-    path = "/" + path;
+  
+  if (normalizedPath === '/') {
+    return normalizedBase || '/';
   }
-  path = removeTrailingSlash(path);
-
-  if (lowerCase) {
-    path = path.toLowerCase();
-  }
-
-  return `${baseName}${path}`;
-};
-
-const removeTrailingSlash = (path: string) => {
-  if (hasTrailingSlash(path)) {
-    path = path.substring(0, path.length - 1);
-  }
-  return path;
-};
-
-const hasTrailingSlash = (path: string) => {
-  if (path.substring(path.length - 1) == "/") {
-    return true;
-  }
-  return false;
+  
+  return normalizedBase + normalizedPath;
 };
 
 /**
