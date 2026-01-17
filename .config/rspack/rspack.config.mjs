@@ -101,6 +101,13 @@ export default defineConfig({
       inject: "head",
       baseHref,
     }),
+    new HtmlPlugin({
+      minify: false,
+      filename: "404.html",
+      template: "src/gui/index.html",
+      inject: "head",
+      baseHref,
+    }),
     new rspack.DefinePlugin({
       BASE_HREF: JSON.stringify(baseHref)
     }),

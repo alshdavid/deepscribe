@@ -3,17 +3,17 @@ import { Req, Router, RouterOptions } from "./router.ts";
 import { useEffect, useState } from "preact/hooks";
 
 export type PreactRouterOptions = RouterOptions & {
-  target: HTMLElement;
+  root: HTMLElement;
   providers?: Array<VNode>;
 };
 
 export class PreactRouter extends Router {
-  #target: HTMLElement;
+  #root: HTMLElement;
   #providers: Array<VNode>;
 
-  constructor({ target, providers = [], ...routerOptions }: PreactRouterOptions) {
+  constructor({ root: target, providers = [], ...routerOptions }: PreactRouterOptions) {
     super(routerOptions);
-    this.#target = target;
+    this.#root = target;
     this.#providers = providers;
   }
 
@@ -21,12 +21,12 @@ export class PreactRouter extends Router {
     return this.route(path, (req) => {
       render(
         null,
-        this.#target
+        this.#root
       );
 
       render(
         <App req={req} inner={element} providers={this.#providers} />,
-        this.#target
+        this.#root
       );
     });
   }
