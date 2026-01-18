@@ -81,7 +81,6 @@ export class Router {
 
   #digest() {
     const [,normalizedPath] = normalizePathname(this.#baseHref, globalThis.location.pathname)
-    console.log(normalizedPath)
     const [handler, params, pattern] = this.#matchRoute(normalizedPath)
     if (!handler || !pattern) {
       return
