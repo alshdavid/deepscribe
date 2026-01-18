@@ -5,6 +5,7 @@ export const AUTO_BASE_HREF = Symbol('auto')
 export type HandlerFunc = (req: Req) => any | Promise<any>
 export type Req = {
   routePattern: string
+  path: string,
   url: URL,
   params: Record<string, string>
 }
@@ -79,12 +80,14 @@ export class Router {
 
   #digest() {
     const [,normalizedPath] = normalizePathname(this.#baseHref, globalThis.location.pathname)
+    console.log(normalizedPath)
     const [handler, params, pattern] = this.#matchRoute(normalizedPath)
     if (!handler || !pattern) {
       return
     }
-    const req = {
+    const req: Req = {
       routePattern: pattern,
+      path: normalizedPath,
       url: new URL(globalThis.location.href),
       params: params || {},
     }
@@ -94,6 +97,7 @@ export class Router {
 
   #matchRoute(pathname: string): [HandlerFunc?, Record<string, string>?, string?] {
     const route = this.#routes.get(pathname);
+
     if (route) {
       return [route, {}, pathname]
     }
