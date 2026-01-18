@@ -1,4 +1,5 @@
-import { matchPath, normalizePathname } from "./url-parser.ts"
+import { matchPath } from "./match-path.ts"
+import { normalizePathname } from "./normalize-pathname.ts"
 
 export const AUTO_BASE_HREF = Symbol('auto')
 

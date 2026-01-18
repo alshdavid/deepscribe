@@ -1,6 +1,6 @@
 import { test } from 'node:test'
 import * as assert from 'node:assert'
-import { normalizePathname } from './url-parser.ts'
+import { normalizePathname } from './normalize-pathname.ts'
 
 test('It should provide base route', () => {
   const [baseHref, path, fullPath] = normalizePathname("/", "/")
