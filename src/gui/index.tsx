@@ -16,7 +16,8 @@ app.mount('/chat/:id', () => <ChatPage />)
 app.mount('/**', () => <NotFoundPage />)
 
 app.start()
-
+// @ts-expect-error
+globalThis.app = app
 // import "./styles.css";
 // import { IconEllipsis } from "./components/icon/ellipsis.tsx";
 // import { IconSend } from "./components/icon/icon-send.tsx";
