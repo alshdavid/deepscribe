@@ -6,7 +6,7 @@ export class FormField<T> extends EventTarget {
   }
 
   set value(update: T) {
-    this.update(update)
+    this.update(update);
   }
 
   asProps() {

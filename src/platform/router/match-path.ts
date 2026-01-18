@@ -11,15 +11,18 @@ export const matchPath = (
   pattern: string,
   pathname: string,
 ): Record<string, string> | undefined => {
-  const [normalizedBase, normalizedPattern] = normalizePathname(baseHref, pattern);
-  let strippedPath = pathname.substring(normalizedBase.length)
-  if (!strippedPath.startsWith('/')) {
-    strippedPath = `/${strippedPath}`
+  const [normalizedBase, normalizedPattern] = normalizePathname(
+    baseHref,
+    pattern,
+  );
+  let strippedPath = pathname.substring(normalizedBase.length);
+  if (!strippedPath.startsWith("/")) {
+    strippedPath = `/${strippedPath}`;
   }
 
   // No args
   if (strippedPath === normalizedPattern) {
-    return {}
+    return {};
   }
 
   const params: Record<string, string> = {};

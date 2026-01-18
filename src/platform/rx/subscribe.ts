@@ -12,7 +12,9 @@ export function subscribe(
   target.addEventListener("change", callback);
   const extras = new Set<EventTarget>();
 
-  for (const value of Object.values((target as Record<string | symbol, any>)?.[ON_CHANGE]) || []) {
+  for (const value of Object.values(
+    (target as Record<string | symbol, any>)?.[ON_CHANGE],
+  ) || []) {
     if (!(value instanceof EventTarget)) {
       continue;
     }

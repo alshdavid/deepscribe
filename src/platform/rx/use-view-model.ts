@@ -12,7 +12,7 @@ export function useViewModel<
 
   useEffect(() => {
     const onChange = () => forceUpdate();
-    return subscribe(instance, onChange)
+    return subscribe(instance, onChange);
   }, [instance]);
 
   return instance;

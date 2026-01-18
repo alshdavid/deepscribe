@@ -3,7 +3,7 @@ import { ON_CHANGE } from "./symbol.ts";
 /**
  * @description This decorator dispatches a notification when a property is replaced
  */
-export function push<T extends EventTarget, V>(
+export function rx<T extends EventTarget, V>(
   _target: ClassAccessorDecoratorTarget<T, V>,
   context: ClassAccessorDecoratorContext<T, V>,
 ) {
