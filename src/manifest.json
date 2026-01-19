@@ -1,15 +1,17 @@
 {
-	"manifest_version": 1,
-	"version": "0.1.0",
-	"short_name": "OpenChatLite",
-	"name": "OpenChatLite",
-	"start_url": "/chat-frontend/index.html",
-	"display": "standalone",
+  "manifest_version": 1,
+  "version": "0.1.0",
+  "short_name": "OpenChatLite",
+  "name": "OpenChatLite",
+  "start_url": "/chat-frontend/index.html",
+  "display": "standalone",
   "theme_color": "#111111",
   "background_color": "#111111",
-	"icons": [{
-		"src": "/chat-frontend/favicon.svg",
-		"type": "image/svg+xml",
-		"sizes": "264x264"
-	}]
+  "icons": [
+    {
+      "src": "/chat-frontend/favicon.svg",
+      "type": "image/svg+xml",
+      "sizes": "264x264"
+    }
+  ]
 }

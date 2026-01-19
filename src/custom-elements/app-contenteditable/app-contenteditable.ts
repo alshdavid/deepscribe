@@ -1,5 +1,5 @@
 // @ts-expect-error
-import css from './app-contenteditable.css?type=raw'
+import css from "./app-contenteditable.css?type=raw";
 
 /* 
   Using a custom element for the content editable textarea
@@ -59,30 +59,43 @@ export class HTMLContentEditable extends HTMLElement {
     this.shadowRoot.adoptedStyleSheets = [styles];
 
     this.#$editable = globalThis.document.createElement("div");
-    
-    const placeholder = this.getAttribute("placeholder")
+
+    const placeholder = this.getAttribute("placeholder");
     if (placeholder) {
       this.#$editable.setAttribute("data-placeholder", placeholder);
     }
 
-    const disabled = this.hasAttribute("disabled") || this.getAttribute("disabled") === "true"
+    const disabled =
+      this.hasAttribute("disabled") || this.getAttribute("disabled") === "true";
     if (disabled) {
       this.#$editable.setAttribute("disabled", `${disabled}`);
     }
 
     this.#$editable.setAttribute("contenteditable", `${!disabled}`);
-    this.#value = this.getAttribute("value") || ''
+    this.#value = this.getAttribute("value") || "";
 
     this.shadowRoot.appendChild(this.#$editable);
 
-    this.addEventListener("input", (e) => {e.preventDefault(); e.stopPropagation()});
-    this.addEventListener("blur", (e) => {e.preventDefault(); e.stopPropagation()});
-    this.addEventListener("focus", (e) => {e.preventDefault(); e.stopPropagation()});
-    this.addEventListener("paste", (e) => {e.preventDefault(); e.stopPropagation()});
+    this.addEventListener("input", (e) => {
+      e.preventDefault();
+      e.stopPropagation();
+    });
+    this.addEventListener("blur", (e) => {
+      e.preventDefault();
+      e.stopPropagation();
+    });
+    this.addEventListener("focus", (e) => {
+      e.preventDefault();
+      e.stopPropagation();
+    });
+    this.addEventListener("paste", (e) => {
+      e.preventDefault();
+      e.stopPropagation();
+    });
 
     this.#$editable.addEventListener("input", () => {
-      if (this.#$editable.innerText === '\n') {
-        this.#$editable.innerHTML = ''
+      if (this.#$editable.innerText === "\n") {
+        this.#$editable.innerHTML = "";
       }
       this.#value = this.#$editable.innerText;
       this.dispatchEvent(new InputEvent("input", { bubbles: true }));
@@ -119,9 +132,9 @@ export class HTMLContentEditable extends HTMLElement {
 
   focus = () => {
     this.#$editable.focus();
-  }
+  };
 
   blur = () => {
     this.#$editable.blur();
-  }
+  };
 }

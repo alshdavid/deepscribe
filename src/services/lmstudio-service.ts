@@ -7,14 +7,20 @@ import {
 import { rx } from "../platform/rx/index.ts";
 
 export class LMStudioService extends EventTarget {
+  @rx accessor apiAddress: TextField;
   @rx accessor selectedModel: TextField;
   @rx accessor models: Array<Model>;
+  @rx accessor connected: boolean;
+  @rx accessor connecting: boolean;
   client: LMStudioConnection | null;
 
   constructor() {
     super();
     this.client = null;
     this.selectedModel = new TextField();
+    this.apiAddress = new TextField("http://localhost:1234");
+    this.connected = false;
+    this.connecting = false;
     this.models = [];
   }
 
@@ -22,18 +28,28 @@ export class LMStudioService extends EventTarget {
     return this.client !== null;
   }
 
-  async connect(address: string): Promise<void> {
+  async connect(): Promise<void> {
+    if (this.apiAddress.value === "") {
+      throw new Error("Missing address");
+    }
+    this.connected = false;
+    this.connecting = true;
     try {
       this.client = new LMStudioConnection({
-        address,
+        address: this.apiAddress.value,
       });
 
       // await new Promise((res) => setTimeout(res, 1000));
       this.models = await this.client.getModels();
+      if (this.models.length) {
+        this.selectedModel.value = this.models[0].id;
+      }
+      this.connected = true;
     } catch (error) {
       this.client = null;
       throw error;
     }
+    this.connecting = false;
   }
 
   async refresh() {

@@ -7,12 +7,16 @@ import { ChatPage } from "./pages/chat/chat-page.tsx";
 import { NotFoundPage } from "./pages/not-found/not-found-page.tsx";
 import { Provider } from "./platform/preact/provider.ts";
 import { LMStudioService } from "./services/lmstudio-service.ts";
+import { SideNavService } from "./services/side-nave-service.ts";
 
 // Services
 const provider = new Provider();
 
 const lmStudioService = new LMStudioService();
 provider.provide(LMStudioService, lmStudioService);
+
+const sideNavService = new SideNavService();
+provider.provide(SideNavService, sideNavService);
 
 // ClientSide SPA Router
 const app = new PreactRouter({

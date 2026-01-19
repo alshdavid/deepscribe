@@ -27,11 +27,6 @@ body[data-route="/chat/:id"] {
   .chat-body {
     position: relative;
     flex: 1;
-    overflow-y: scroll;
-    -ms-overflow-style: none;
-    scrollbar-width: none;
-    display: flex;
-    flex-direction: column;
 
     &::-webkit-scrollbar {
       display: none;
@@ -67,7 +62,7 @@ body[data-route="/chat/:id"] {
       }
 
       &.peer .article {
-        color: var(--color-grey-100)
+        color: var(--color-grey-100);
         /* background-color: var(--color-grey-700); */
       }
     }

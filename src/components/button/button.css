@@ -1,5 +1,6 @@
 .component-button {
   display: inline-block;
-  padding: var(--spacing-1) var(--spacing-2);
+  padding: 0;
   border: none;
+  background-color: transparent;
 }

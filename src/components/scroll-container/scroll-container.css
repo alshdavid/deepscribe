@@ -1,6 +1,6 @@
 .component-scroll-container {
   transform: rotateX(180deg);
-  overflow-y: scroll;  
+  overflow-y: scroll;
   -ms-overflow-style: none;
   scrollbar-width: none;
 

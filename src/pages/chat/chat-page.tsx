@@ -5,7 +5,6 @@ import { rx, notifyChange, useViewModel } from "../../platform/rx/index.ts";
 import { TextField } from "../../platform/forms/index.ts";
 import { useInject } from "../../platform/preact/provider.ts";
 import { LMStudioService } from "../../services/lmstudio-service.ts";
-import { Icon } from "../../components/icon/icon.tsx";
 import { Router } from "../../platform/router/router.ts";
 import { useRouter } from "../../platform/router/preact.tsx";
 import { ScrollContainer } from "../../components/scroll-container/scroll-container.tsx";
@@ -88,14 +87,14 @@ export function ChatPage() {
   const router = useRouter();
   const lmStudioService = useInject(LMStudioService);
   const vm = useViewModel(ChatPageVm, [router, lmStudioService]);
-  const elmRef = useRef<HTMLContentEditable>(null)
+  const elmRef = useRef<HTMLContentEditable>(null);
 
-  useEffect(() => elmRef.current?.focus(), [elmRef])
-  
+  useEffect(() => elmRef.current?.focus(), [elmRef]);
+
   return (
     <Fragment>
       <nav className="navbar">
-        <Icon icon="bars" height="16px" />
+        {/* <Icon icon="bars" height="16px" /> */}
         <div className="chat-title">Chat Title</div>
       </nav>
       <main className="chat-body">
@@ -108,12 +107,12 @@ export function ChatPage() {
         </ScrollContainer>
       </main>
       <footer className="chat-entry">
-        <ChatInput 
+        <ChatInput
           placeholder="Aa"
           onSubmit={() => vm.submit()}
           onInput={vm.draftText.fromEvent}
           value={vm.draftText.value}
-          />
+        />
       </footer>
     </Fragment>
   );
