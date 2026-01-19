@@ -1,12 +1,15 @@
 {
-  "manifest_version": 1,
-  "version": "0.1.0",
-  "short_name": "OpenChatLite",
+  "manifest_version": 2,
   "name": "OpenChatLite",
-  "start_url": "index.html",
+  "short_name": "OpenChatLite",
+  "description": "A lightweight chat interface for OpenAI compatible LLMs",
+  "version": "0.1.0",
+  "start_url": "/",
   "display": "standalone",
+  "orientation": "portrait",
   "theme_color": "#111111",
   "background_color": "#111111",
+  "scope": "/",
   "icons": [
     {
       "src": "favicon.svg",
