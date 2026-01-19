@@ -15,9 +15,6 @@ concurrency:
   group: "main"
   cancel-in-progress: true
 
-env:
-  BASE_HREF: /chat-frontend/
-
 jobs:
   deploy:
     environment:
