@@ -27,17 +27,11 @@ body[data-route="/chat/:id"] {
   .chat-body {
     position: relative;
     flex: 1;
-
-    &::-webkit-scrollbar {
-      display: none;
-    }
-
-    .component-scroll-container {
-      /* Reversed */
-      padding-bottom: 48px;
-      padding-left: var(--spacing-4);
-      padding-right: var(--spacing-4);
-    }
+    height: 100%;
+    padding-left: var(--spacing-4);
+    padding-right: var(--spacing-4);
+    padding-bottom: 146px;
+    padding-top: 48px;
 
     .chat-bubble {
       display: flex;
@@ -64,11 +58,23 @@ body[data-route="/chat/:id"] {
       &.peer .article {
         color: var(--color-grey-100);
         /* background-color: var(--color-grey-700); */
+
+        &:before {
+          content: "✨";
+          display: block;
+          font-size: 22px;
+          margin-bottom: var(--spacing-3);
+          margin-left: var(--spacing-2);
+        }
       }
     }
   }
 
   .chat-entry {
+    position: fixed;
+    bottom: 0px;
+    left: 0px;
+    right: 0px;
     padding: var(--spacing-4);
     display: flex;
     justify-content: space-around;

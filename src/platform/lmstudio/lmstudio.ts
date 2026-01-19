@@ -116,7 +116,7 @@ export class LMStudioConnection {
    */
   async *streamChatCompletion(
     options: ChatCompletionOptions,
-  ): AsyncIterable<string> {
+  ): AsyncIterableIterator<string> {
     const response = await fetch(`${this.address}/v1/chat/completions`, {
       method: "POST",
       headers: {

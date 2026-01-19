@@ -100,7 +100,10 @@ export function ChatPage() {
       <main className="chat-body">
         <ScrollContainer>
           {vm.conversation.map((message) => (
-            <div className={`chat-bubble ${message.sender}`}>
+            <div
+              key={message.content}
+              className={`chat-bubble ${message.sender}`}
+            >
               <Markdown contents={message.content} className="article" />
             </div>
           ))}

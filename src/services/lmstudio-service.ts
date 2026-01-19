@@ -18,7 +18,7 @@ export class LMStudioService extends EventTarget {
     super();
     this.client = null;
     this.selectedModel = new TextField();
-    this.apiAddress = new TextField("http://localhost:1234");
+    this.apiAddress = new TextField();
     this.connected = false;
     this.connecting = false;
     this.models = [];
@@ -79,7 +79,7 @@ export class LMStudioService extends EventTarget {
   streamChatCompletion({
     model,
     ...options
-  }: ChatCompletionOptions): AsyncIterable<string> {
+  }: ChatCompletionOptions): AsyncIterableIterator<string> {
     if (!this.client) {
       throw new Error("Not connected to server");
     }
